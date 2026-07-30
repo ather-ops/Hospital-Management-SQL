@@ -1,0 +1,16 @@
+patient_full_name,doctor_full_name,appointment_date,treatment_type,cost
+"Sarah Brown","Sarah Taylor",2023-04-21,X-Ray,4973.63
+"Jane Jones","Alex Davis",2023-02-23,MRI,4966.18
+"Michael Wilson","Linda Brown",2023-11-22,Chemotherapy,4964.71
+"Laura Wilson","David Taylor",2023-11-07,ECG,4960.65
+"Robert Taylor","Jane Davis",2023-11-27,Chemotherapy,4945.03
+"Jane Moore","Sarah Taylor",2023-06-04,X-Ray,4890.25
+"David Smith","Sarah Taylor",2023-08-31,Physiotherapy,4846.2
+"David Smith","Jane Smith",2023-11-16,Chemotherapy,4834.02
+"Michael Wilson","Jane Smith",2023-01-08,X-Ray,4833.17
+"David Moore","Sarah Taylor",2023-10-25,X-Ray,4809.31
+"Robert Wilson","Alex Davis",2023-09-01,MRI,4799.86
+"Michael Wilson","David Taylor",2023-03-21,Chemotherapy,4781.32
+"Alex Taylor","Jane Davis",2023-11-13,MRI,4716.31
+"Laura Jones","Jane Davis",2023-08-16,MRI,4704.96
+"Michael Taylor","Jane Smith",2023-04-08,Chemotherapy,4687.68
