@@ -1,0 +1,201 @@
+"Bill ID","Patient Full Name","Bill Amount","Payment Method","Payment Status"
+B108,"Sarah Brown",4973.63,Cash,Paid
+B130,"Jane Jones",4966.18,Insurance,Failed
+B156,"Michael Wilson",4964.71,"Credit Card",Failed
+B083,"Laura Wilson",4960.65,"Credit Card",Pending
+B076,"Robert Taylor",4945.03,"Credit Card",Pending
+B173,"Jane Moore",4890.25,Insurance,Pending
+B192,"David Smith",4846.2,Insurance,Paid
+B190,"David Smith",4834.02,"Credit Card",Paid
+B036,"Michael Wilson",4833.17,Cash,Pending
+B115,"David Moore",4809.31,Insurance,Paid
+B004,"Robert Wilson",4799.86,Insurance,Failed
+B042,"Michael Wilson",4781.32,Insurance,Pending
+B147,"Alex Taylor",4716.31,Insurance,Failed
+B013,"Laura Jones",4704.96,Cash,Paid
+B159,"Michael Taylor",4687.68,"Credit Card",Pending
+B126,"Robert Wilson",4672.3,"Credit Card",Pending
+B011,"John Brown",4671.66,Cash,Failed
+B131,"David Moore",4671.5,"Credit Card",Failed
+B178,"Jane Jones",4652.41,Cash,Pending
+B154,"Laura Davis",4637.26,Cash,Failed
+B051,"Michael Johnson",4550.1,"Credit Card",Failed
+B009,"Jane Wilson",4541.14,"Credit Card",Paid
+B091,"Michael Taylor",4523.86,"Credit Card",Paid
+B045,"Michael Taylor",4478.93,Cash,Paid
+B102,"Robert Wilson",4460.36,"Credit Card",Pending
+B163,"Jane Wilson",4450.88,Insurance,Pending
+B164,"Alex Taylor",4406.26,"Credit Card",Failed
+B065,"Michael Wilson",4382.59,Insurance,Failed
+B177,"Robert Taylor",4379.07,Insurance,Pending
+B157,"Michael Wilson",4331.41,Insurance,Failed
+B133,"Emily Miller",4289.15,Insurance,Paid
+B050,"Linda Miller",4279.38,Cash,Failed
+B139,"Michael Wilson",4217.3,Insurance,Pending
+B056,"David Moore",4201.76,Insurance,Paid
+B175,"Laura Davis",4201.16,Cash,Paid
+B044,"Robert Miller",4186.35,Insurance,Paid
+B161,"Linda Miller",4178.52,Insurance,Paid
+B002,"Alex Moore",4158.44,Insurance,Paid
+B038,"Robert Williams",4126.97,"Credit Card",Failed
+B165,"Robert Miller",4126.66,Cash,Failed
+B020,"Alex Taylor",4113.62,"Credit Card",Failed
+B099,"Emily Jones",4101.6,"Credit Card",Pending
+B125,"Linda Johnson",4079.52,Insurance,Failed
+B166,"David Wilson",4055.14,Cash,Failed
+B140,"Laura Davis",4019.13,Cash,Pending
+B054,"Michael Taylor",4012.36,Cash,Failed
+B001,"Alex Smith",3941.97,Insurance,Pending
+B181,"Michael Taylor",3941.64,"Credit Card",Failed
+B122,"Laura Davis",3902.73,Insurance,Failed
+B137,"Sarah Miller",3898.72,"Credit Card",Pending
+B064,"David Wilson",3815.93,Cash,Paid
+B111,"David Wilson",3787.93,"Credit Card",Paid
+B086,"Jane Jones",3759.52,Cash,Pending
+B003,"Emily Miller",3731.55,Insurance,Paid
+B081,"Michael Taylor",3729.19,Insurance,Pending
+B024,"David Moore",3722.68,Cash,Pending
+B032,"Emily Miller",3690.71,Insurance,Paid
+B141,"Robert Williams",3689.35,Insurance,Pending
+B078,"Laura Johnson",3628.15,"Credit Card",Paid
+B171,"Emily Jones",3627.28,Insurance,Failed
+B082,"Emily Smith",3615.96,Insurance,Pending
+B117,"Alex Moore",3605.02,"Credit Card",Paid
+B029,"Michael Taylor",3565.03,Insurance,Paid
+B107,"Laura Davis",3512.69,"Credit Card",Pending
+B058,"Alex Moore",3503.97,Cash,Failed
+B124,"Laura Johnson",3492.1,"Credit Card",Pending
+B109,"David Wilson",3478.28,Cash,Pending
+B103,"Michael Wilson",3428.95,"Credit Card",Pending
+B008,"Michael Taylor",3413.64,Cash,Failed
+B069,"Laura Davis",3388.87,"Credit Card",Paid
+B174,"Laura Davis",3384.37,Cash,Paid
+B198,"John Brown",3383.72,Cash,Failed
+B041,"David Wilson",3349.18,"Credit Card",Paid
+B060,"Jane Moore",3307.37,Insurance,Pending
+B135,"John Brown",3306.14,"Credit Card",Pending
+B200,"Alex Johnson",3288.15,Insurance,Paid
+B048,"David Williams",3249.41,"Credit Card",Failed
+B023,"Jane Moore",3246.5,"Credit Card",Pending
+B070,"Laura Jones",3231.92,Cash,Pending
+B180,"Alex Johnson",3228.14,"Credit Card",Paid
+B043,"Alex Smith",3207.25,Insurance,Failed
+B152,"David Wilson",3202.67,Cash,Failed
+B074,"Michael Taylor",3175.14,"Credit Card",Failed
+B062,"Laura Davis",3139.74,Cash,Paid
+B087,"John Taylor",3102.74,Cash,Pending
+B034,"Jane Wilson",3052.9,Cash,Failed
+B114,"Laura Wilson",3030.34,Cash,Pending
+B110,"David Moore",3010.03,Cash,Failed
+B148,"Robert Miller",2992.11,Cash,Paid
+B039,"Linda Johnson",2976.02,Insurance,Failed
+B191,"Robert Williams",2972.88,"Credit Card",Failed
+B071,"David Williams",2960.14,Cash,Paid
+B101,"Michael Wilson",2930.05,"Credit Card",Paid
+B132,"Jane Moore",2929.81,"Credit Card",Failed
+B021,"Alex Moore",2926.23,Insurance,Failed
+B119,"Linda Johnson",2911.22,"Credit Card",Failed
+B104,"Michael Wilson",2898.31,"Credit Card",Failed
+B031,"John Taylor",2863.24,"Credit Card",Pending
+B134,"Robert Wilson",2844.31,Insurance,Failed
+B097,"Laura Wilson",2835.77,Cash,Failed
+B153,"David Wilson",2820.56,Cash,Paid
+B195,"Emily Miller",2777.64,"Credit Card",Failed
+B183,"Emily Williams",2761.55,Cash,Pending
+B155,"Robert Wilson",2736.34,Insurance,Failed
+B075,"Linda Brown",2735.45,Cash,Failed
+B179,"David Smith",2691.78,Cash,Failed
+B016,"Michael Taylor",2686.42,Insurance,Paid
+B037,"Emily Moore",2675.96,Insurance,Failed
+B112,"Emily Miller",2593.43,Insurance,Pending
+B061,"Sarah Brown",2532.95,"Credit Card",Paid
+B121,"Robert Williams",2526.67,"Credit Card",Pending
+B151,"Michael Taylor",2512.41,Cash,Pending
+B196,"Linda Miller",2477.8,Cash,Pending
+B193,"Sarah Miller",2446.24,Cash,Failed
+B080,"Robert Miller",2426.9,"Credit Card",Pending
+B057,"Alex Moore",2406.82,"Credit Card",Paid
+B026,"Michael Taylor",2360.97,Insurance,Paid
+B049,"David Wilson",2349.63,"Credit Card",Pending
+B079,"Laura Davis",2319.43,Insurance,Paid
+B169,"David Smith",2313.41,"Credit Card",Pending
+B128,"Robert Williams",2296.92,"Credit Card",Pending
+B184,"Jane Smith",2293.98,Insurance,Pending
+B150,"Jane Moore",2286.42,"Credit Card",Paid
+B073,"Emily Williams",2259.08,"Credit Card",Failed
+B162,"Jane Smith",2212.8,Cash,Paid
+B186,"Laura Wilson",2153.9,Insurance,Paid
+B145,"Alex Johnson",2120.61,Insurance,Paid
+B095,"Alex Johnson",2097.48,Cash,Failed
+B052,"Michael Taylor",2090.4,Cash,Paid
+B014,"Laura Davis",2082.3,"Credit Card",Paid
+B123,"David Moore",2064.07,"Credit Card",Paid
+B172,"Laura Wilson",2057.45,Cash,Paid
+B106,"Robert Williams",1998.51,"Credit Card",Paid
+B105,"Michael Taylor",1959.5,Cash,Pending
+B093,"Alex Smith",1955.17,"Credit Card",Failed
+B194,"David Davis",1903.17,Cash,Pending
+B022,"David Wilson",1900.88,"Credit Card",Failed
+B019,"David Smith",1882.8,Insurance,Pending
+B149,"Sarah Miller",1874.86,"Credit Card",Failed
+B167,"David Wilson",1871.06,"Credit Card",Pending
+B143,"Laura Davis",1864.08,Insurance,Failed
+B018,"John Brown",1781.93,Insurance,Pending
+B055,"Emily Smith",1736.63,Cash,Failed
+B088,"David Davis",1733.72,Cash,Paid
+B025,"Emily Moore",1726.81,Cash,Failed
+B144,"Laura Davis",1684.01,Insurance,Failed
+B017,"Robert Williams",1655.49,"Credit Card",Pending
+B035,"Michael Wilson",1654.53,Insurance,Failed
+B010,"David Wilson",1595.67,Cash,Paid
+B053,"Sarah Brown",1565.92,Insurance,Pending
+B127,"David Wilson",1555.89,"Credit Card",Pending
+B100,"David Smith",1551.7,"Credit Card",Failed
+B072,"Michael Wilson",1543.76,"Credit Card",Pending
+B046,"Sarah Miller",1526.36,Cash,Paid
+B094,"Robert Williams",1519.95,Cash,Failed
+B066,"Michael Wilson",1475.33,"Credit Card",Pending
+B199,"Jane Jones",1472.17,"Credit Card",Paid
+B047,"Alex Moore",1454.2,Insurance,Failed
+B158,"Linda Johnson",1438.3,"Credit Card",Paid
+B118,"Sarah Brown",1404.2,Insurance,Failed
+B006,"Linda Miller",1381.0,Insurance,Pending
+B092,"John Taylor",1363.4,"Credit Card",Failed
+B030,"John Taylor",1316.47,"Credit Card",Pending
+B028,"Laura Davis",1315.17,"Credit Card",Paid
+B116,"Jane Wilson",1288.86,Cash,Paid
+B182,"Laura Johnson",1286.77,Insurance,Paid
+B170,"Linda Brown",1280.86,Cash,Failed
+B063,"Laura Wilson",1256.06,Insurance,Failed
+B129,"Emily Moore",1185.87,Insurance,Pending
+B185,"Laura Davis",1158.68,Cash,Pending
+B077,"David Smith",1113.98,"Credit Card",Paid
+B189,"David Wilson",1108.25,Insurance,Failed
+B176,"Michael Taylor",1096.36,"Credit Card",Paid
+B084,"David Wilson",1077.77,Insurance,Pending
+B138,"David Moore",1074.71,Cash,Paid
+B027,"David Wilson",1048.49,Insurance,Pending
+B160,"Jane Wilson",1023.65,Cash,Paid
+B033,"Michael Wilson",980.95,"Credit Card",Paid
+B197,"David Williams",975.49,Cash,Pending
+B085,"Linda Johnson",968.49,"Credit Card",Paid
+B015,"John Taylor",956.39,Insurance,Pending
+B120,"Alex Moore",935.04,Insurance,Paid
+B067,"Linda Brown",930.72,"Credit Card",Pending
+B059,"Linda Moore",929.91,Cash,Pending
+B136,"Laura Johnson",901.06,"Credit Card",Failed
+B146,"Alex Moore",894.39,Insurance,Pending
+B090,"John Taylor",885.46,Insurance,Paid
+B168,"Linda Johnson",864.14,"Credit Card",Failed
+B089,"David Smith",857.39,Cash,Pending
+B096,"Michael Johnson",812.41,"Credit Card",Pending
+B187,"Linda Moore",806.78,"Credit Card",Pending
+B098,"Linda Miller",804.26,"Credit Card",Paid
+B012,"David Smith",771.2,Insurance,Pending
+B113,"Michael Wilson",770.64,Insurance,Pending
+B040,"Michael Taylor",695.36,Cash,Failed
+B142,"Sarah Miller",662.72,Insurance,Paid
+B188,"Emily Smith",616.15,Cash,Paid
+B068,"Robert Williams",606.37,"Credit Card",Failed
+B005,"Emily Williams",582.05,"Credit Card",Pending
+B007,"David Williams",534.03,Cash,Failed
