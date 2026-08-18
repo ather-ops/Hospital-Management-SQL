@@ -1,0 +1,11 @@
+"Treatment ID","Treatment Type","Total Cost"
+T007,Chemotherapy,534.03
+T005,ECG,582.05
+T068,ECG,606.37
+T188,Chemotherapy,616.15
+T142,MRI,662.72
+T040,Chemotherapy,695.36
+T113,Chemotherapy,770.64
+T012,Chemotherapy,771.2
+T098,ECG,804.26
+T187,X-Ray,806.78
