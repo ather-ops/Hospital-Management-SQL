@@ -1,0 +1,11 @@
+"Patients Full Name","Patient ID","Bill ID",Amount,"Payment Method","Payment Status"
+"Sarah Brown",P024,B108,4973.63,Cash,Paid
+"Jane Jones",P017,B130,4966.18,Insurance,Failed
+"Michael Wilson",P021,B156,4964.71,"Credit Card",Failed
+"Laura Wilson",P050,B083,4960.65,"Credit Card",Pending
+"Robert Taylor",P044,B076,4945.03,"Credit Card",Pending
+"Jane Moore",P047,B173,4890.25,Insurance,Pending
+"David Smith",P038,B192,4846.2,Insurance,Paid
+"David Smith",P029,B190,4834.02,"Credit Card",Paid
+"Michael Wilson",P033,B036,4833.17,Cash,Pending
+"David Moore",P049,B115,4809.31,Insurance,Paid
