@@ -1,6 +1,12 @@
 import streamlit as st
-from database import run_query
-
+from database import (
+    run_query,
+    ask_ai,
+    generate_sql,
+    DATABASE_SCHEMA,
+    validate_sql,
+    get_table_schema
+)
 st.set_page_config(
     page_title="Hospital Management System",
     page_icon="⚡",
@@ -236,6 +242,24 @@ st.bar_chart(
     x="Patient ID",
     y="Total Appointments"
 )
+# Table Schema
+st.subheader("Table Schema")
+st.write(
+    get_table_schema("patients")
+)
+st.write(
+    get_table_schema("doctors")
+)
+st.write(
+    get_table_schema("appointments")
+)
+st.write(
+    get_table_schema("treatments")
+)
+st.write(
+    get_table_schema("billing")
+)
+
 
 # AI Chat Assistant
 st.divider()
@@ -260,8 +284,7 @@ if prompt:
     )
     with st.chat_message("user"):
         st.write(prompt)
-
-    response = "AI connection will be added in the next step."
+    response = ask_ai(prompt)
 
     st.session_state.messages.append(
         {
@@ -271,3 +294,24 @@ if prompt:
     )
     with st.chat_message("assistant"):
         st.write(response)
+
+# Temporary test
+st.divider()
+st.subheader("AI SQL Test")
+test_question = st.text_input(
+    "Test question",
+    "How many patients are there?"
+)
+if test_question:
+    sql = generate_sql(
+        test_question,
+        DATABASE_SCHEMA
+    )
+    st.code(
+        sql,
+        language="sql"
+    )
+    if validate_sql(sql):
+        st.success("SQL query is valid.")
+    else:
+        st.error("SQL query is not allowed.")
