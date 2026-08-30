@@ -5,7 +5,9 @@ from database import (
     generate_sql,
     DATABASE_SCHEMA,
     validate_sql,
-    get_table_schema
+    get_table_schema,
+    execute_sql,
+    generate_answer
 )
 st.set_page_config(
     page_title="Hospital Management System",
@@ -268,13 +270,10 @@ st.write("Ask questions about the hospital data.")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
-
 prompt = st.chat_input("Ask something about the hospital data...")
-
 if prompt:
     st.session_state.messages.append(
         {
@@ -282,10 +281,22 @@ if prompt:
             "content": prompt
         }
     )
+
     with st.chat_message("user"):
         st.write(prompt)
-    response = ask_ai(prompt)
+    sql = generate_sql(
+        prompt,
+        DATABASE_SCHEMA
+    )
+    if validate_sql(sql):
+        result = execute_sql(sql)
+        response = generate_answer(
+            prompt,
+            result
+        )
 
+    else:
+        response = "I could not generate a valid database query."
     st.session_state.messages.append(
         {
             "role": "assistant",
@@ -294,24 +305,3 @@ if prompt:
     )
     with st.chat_message("assistant"):
         st.write(response)
-
-# Temporary test
-st.divider()
-st.subheader("AI SQL Test")
-test_question = st.text_input(
-    "Test question",
-    "How many patients are there?"
-)
-if test_question:
-    sql = generate_sql(
-        test_question,
-        DATABASE_SCHEMA
-    )
-    st.code(
-        sql,
-        language="sql"
-    )
-    if validate_sql(sql):
-        st.success("SQL query is valid.")
-    else:
-        st.error("SQL query is not allowed.")
