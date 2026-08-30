@@ -47,22 +47,6 @@ st.divider()
 # Filters
 st.subheader("Filters")
 
-doctor_query = """
-SELECT DISTINCT doctor_id
-FROM appointments
-ORDER BY doctor_id;
-"""
-doctor_result = run_query(doctor_query)
-appointments_doctors = doctor_result["doctor_id"].tolist()
-
-patient_query = """
-SELECT DISTINCT patient_id
-FROM appointments
-ORDER BY patient_id;
-"""
-patient_result = run_query(patient_query)
-appointments_patients = patient_result["patient_id"].tolist()
-
 status_query = """
 SELECT DISTINCT status
 FROM appointments
@@ -78,32 +62,12 @@ with st.container(border=True):
             "Appointment Status",
             ["All"] + appointment_statuses
         )
-    with col2:
-        doctor_filter = st.selectbox(
-            "Doctor ID",
-            ["All"] + appointments_doctors
-        )
-    with col3:
-        patient_filter = st.selectbox(
-            "Patient ID",
-            ["All"] + appointments_patients
-        )
 
-conditions = []
-
-if status_filter != "All":
-    conditions.append(f"status = '{status_filter}'")
-
-if doctor_filter != "All":
-    conditions.append(f"doctor_id = {doctor_filter}")
-
-if patient_filter != "All":
-    conditions.append(f"patient_id = {patient_filter}")
-
+# Build WHERE clause with proper quoting
 where_clause = ""
 
-if conditions:
-    where_clause = "WHERE " + " AND ".join(conditions)
+if status_filter != "All":
+    where_clause = f"WHERE status = '{status_filter}'"
 
 st.divider()
 
@@ -274,12 +238,10 @@ st.bar_chart(
 )
 
 # AI Chat Assistant
-
 st.divider()
 st.subheader("🤖 AI Chat Assistant")
-st.write(
-    "Ask questions about the hospital data."
-)
+st.write("Ask questions about the hospital data.")
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -287,9 +249,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-prompt = st.chat_input(
-    "Ask something about the hospital data..."
-)
+prompt = st.chat_input("Ask something about the hospital data...")
 
 if prompt:
     st.session_state.messages.append(
@@ -300,9 +260,9 @@ if prompt:
     )
     with st.chat_message("user"):
         st.write(prompt)
-    response = (
-        "AI connection will be added in the next step."
-    )
+
+    response = "AI connection will be added in the next step."
+
     st.session_state.messages.append(
         {
             "role": "assistant",
