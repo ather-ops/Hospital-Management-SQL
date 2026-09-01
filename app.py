@@ -277,7 +277,6 @@ if "question_count" not in st.session_state:
 if "max_questions" not in st.session_state:
     st.session_state.max_questions = 10
 
-# Show remaining questions
 remaining = st.session_state.max_questions - st.session_state.question_count
 if remaining > 0:
     st.info(f"You have {remaining} questions remaining for this session.")
@@ -292,83 +291,47 @@ for message in st.session_state.messages:
 prompt = st.chat_input("Ask something about the hospital data...")
 
 if prompt:
-    # Check if user has reached the limit
+    # Check limit
     if st.session_state.question_count >= st.session_state.max_questions:
-        response = "You've reached the maximum of 10 questions. Please refresh the page to start a new session."
+        response = "You've reached the maximum of 10 questions. Please refresh the page."
         st.session_state.messages.append({"role": "assistant", "content": response})
         with st.chat_message("assistant"):
             st.write(response)
         st.rerun()
     else:
-        # Increment question count
         st.session_state.question_count += 1
-
         st.session_state.messages.append({"role": "user", "content": prompt})
 
         with st.chat_message("user"):
             st.write(prompt)
-
-        prompt_lower = prompt.lower()
-
-        if "top 10 highest spending patients" in prompt_lower or "top spending patients" in prompt_lower:
-            sql = """
-            SELECT p.first_name || ' ' || p.last_name AS patient_name,
-                   ROUND(SUM(t.cost), 2) AS total_spent
-            FROM patients p
-            JOIN appointments a ON p.patient_id = a.patient_id
-            JOIN treatments t ON a.appointment_id = t.appointment_id
-            GROUP BY p.patient_id
-            ORDER BY total_spent DESC
-            LIMIT 10;
-            """
-        elif "doctor generates most revenue" in prompt_lower or "doctor most revenue" in prompt_lower:
-            sql = """
-            SELECT d.first_name || ' ' || d.last_name AS doctor_name,
-                   ROUND(SUM(t.cost), 2) AS total_revenue
-            FROM doctors d
-            JOIN appointments a ON d.doctor_id = a.doctor_id
-            JOIN treatments t ON a.appointment_id = t.appointment_id
-            WHERE a.status = 'Completed'
-            GROUP BY d.doctor_id
-            ORDER BY total_revenue DESC
-            LIMIT 1;
-            """
-        else:
-            try:
-                sql = generate_sql(prompt, DATABASE_SCHEMA)
-            except Exception as e:
-                if "rate_limit" in str(e).lower():
-                    response = "API rate limit exceeded. Please wait a few minutes and try again."
-                    st.session_state.messages.append({"role": "assistant", "content": response})
-                    with st.chat_message("assistant"):
-                        st.write(response)
-                    st.rerun()
-                else:
-                    response = f"Error: {e}"
-                    st.session_state.messages.append({"role": "assistant", "content": response})
-                    with st.chat_message("assistant"):
-                        st.write(response)
-                    st.rerun()
-
+        try:
+            sql = generate_sql(prompt, DATABASE_SCHEMA)
+        except Exception as e:
+            response = f"Error generating SQL: {e}"
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            with st.chat_message("assistant"):
+                st.write(response)
+            st.rerun()
+        if not sql or sql.strip() == "":
+            response = "I couldn't generate a valid query. Please rephrase your question."
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            with st.chat_message("assistant"):
+                st.write(response)
+            st.rerun()
         if validate_sql(sql):
             result, error = execute_sql(sql)
             if error:
                 response = f"Error: {error}"
             else:
-                response = generate_answer(
-                    prompt,
-                    result,
-                    sql
-                )
+                try:
+                    response = generate_answer(prompt, result, sql)
+                except Exception as e:
+                    response = f"Error generating answer: {e}"
         else:
             response = "I could not generate a valid database query."
-        st.session_state.messages.append(
-            {
-                "role": "assistant",
-                "content": response
-            }
-        )
+
+        st.session_state.messages.append({"role": "assistant", "content": response})
         with st.chat_message("assistant"):
             st.write(response)
-        # Update remaining tokens
+
         st.rerun()

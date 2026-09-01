@@ -8,7 +8,7 @@
   A production-style hospital management database project built with SQL, featuring relational database design, realistic healthcare data, complex queries, joins, aggregation, filtering, and analytical reporting.
 </p>
 
-### Live Demo ⚡: https://hospital-management-sql-agent.streamlit.app/
+### Live Demo ⚡: https://hospital-management--agent.streamlit.app/
 
 ---
 
