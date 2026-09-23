@@ -1,15 +1,7 @@
 import streamlit as st
-from database import (
-    run_query,
-    ask_ai,
-    generate_sql,
-    DATABASE_SCHEMA,
-    validate_sql,
-    get_table_schema,
-    execute_sql,
-    generate_answer
-)
-
+from src.assistant import process_question
+from src.database import run_query, get_table_schema,validate_sql,execute_sql
+from src.ai import generate_sql,DATABASE_SCHEMA
 st.set_page_config(
     page_title="Hospital Management System",
     page_icon="🪅",
@@ -265,74 +257,35 @@ st.write(
 )
 
 # AI CHAT ASSISTANT
+
 st.divider()
 st.subheader("🤖 Hospital AI Assistant")
 st.write(
     "Ask questions about patients, doctors, appointments, "
     "treatments, or billing."
 )
-
-# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
-# Display previous messages
 for message in st.session_state.messages:
-
     with st.chat_message(message["role"]):
         st.write(message["content"])
-# Chat input
 prompt = st.chat_input(
     "Ask something about the hospital data..."
 )
-
 if prompt:
-    # Display user message
     st.session_state.messages.append(
         {
             "role": "user",
             "content": prompt
         }
     )
-
     with st.chat_message("user"):
         st.write(prompt)
-    # Generate assistant response
     with st.chat_message("assistant"):
-        with st.spinner("Hospital AI is thinking..."):
+        with st.spinner("assistant is thinking..."):
             try:
-                # Step 1: Generate SQL
-                sql = generate_sql(
-                    prompt,
-                    DATABASE_SCHEMA
-                )
-                if not sql or not sql.strip():
-                    response = (
-                        "I couldn't generate a database query "
-                        "for your question."
-                    )
-
-                # Step 2: Validate SQL
-                elif not validate_sql(sql):
-                    response = (
-                        "I couldn't generate a valid database "
-                        "query for your question."
-                    )
-                else:
-                    # Step 3: Execute SQL
-                    result, error = execute_sql(sql)
-                    if error:
-                        response = f"Database error: {error}"
-                    else:
-                        # Step 4: Generate natural-language answer
-                        response = generate_answer(
-                            prompt,
-                            result,
-                            sql
-                        )
-                # Display response
+                response = process_question(prompt)
                 st.write(response)
-                # Save assistant response
                 st.session_state.messages.append(
                     {
                         "role": "assistant",
@@ -340,8 +293,11 @@ if prompt:
                     }
                 )
             except Exception as e:
-                st.error("Something went wrong while processing your question.")
-                st.exception(e)
+                response = (
+                    "Something went wrong while processing "
+                    "your question."
+                )
+                st.error(response)
                 st.session_state.messages.append(
                     {
                         "role": "assistant",
