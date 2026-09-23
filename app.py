@@ -266,72 +266,85 @@ st.write(
 
 # AI CHAT ASSISTANT
 st.divider()
-st.subheader("AI Chat Assistant")
-st.write("Ask questions about the hospital data.")
+st.subheader("🤖 Hospital AI Assistant")
+st.write(
+    "Ask questions about patients, doctors, appointments, "
+    "treatments, or billing."
+)
 
-# Initialize session state
+# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-if "question_count" not in st.session_state:
-    st.session_state.question_count = 0
-if "max_questions" not in st.session_state:
-    st.session_state.max_questions = 10
 
-remaining = st.session_state.max_questions - st.session_state.question_count
-if remaining > 0:
-    st.info(f"You have {remaining} questions remaining for this session.")
-else:
-    st.warning("You've reached the maximum of 10 questions. Please refresh the page to start a new session.")
-    st.stop()
-
+# Display previous messages
 for message in st.session_state.messages:
+
     with st.chat_message(message["role"]):
         st.write(message["content"])
-
-prompt = st.chat_input("Ask something about the hospital data...")
+# Chat input
+prompt = st.chat_input(
+    "Ask something about the hospital data..."
+)
 
 if prompt:
-    # Check limit
-    if st.session_state.question_count >= st.session_state.max_questions:
-        response = "You've reached the maximum of 10 questions. Please refresh the page."
-        st.session_state.messages.append({"role": "assistant", "content": response})
-        with st.chat_message("assistant"):
-            st.write(response)
-        st.rerun()
-    else:
-        st.session_state.question_count += 1
-        st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message
+    st.session_state.messages.append(
+        {
+            "role": "user",
+            "content": prompt
+        }
+    )
 
-        with st.chat_message("user"):
-            st.write(prompt)
-        try:
-            sql = generate_sql(prompt, DATABASE_SCHEMA)
-        except Exception as e:
-            response = f"Error generating SQL: {e}"
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            with st.chat_message("assistant"):
+    with st.chat_message("user"):
+        st.write(prompt)
+    # Generate assistant response
+    with st.chat_message("assistant"):
+        with st.spinner("Hospital AI is thinking..."):
+            try:
+                # Step 1: Generate SQL
+                sql = generate_sql(
+                    prompt,
+                    DATABASE_SCHEMA
+                )
+                if not sql or not sql.strip():
+                    response = (
+                        "I couldn't generate a database query "
+                        "for your question."
+                    )
+
+                # Step 2: Validate SQL
+                elif not validate_sql(sql):
+                    response = (
+                        "I couldn't generate a valid database "
+                        "query for your question."
+                    )
+                else:
+                    # Step 3: Execute SQL
+                    result, error = execute_sql(sql)
+                    if error:
+                        response = f"Database error: {error}"
+                    else:
+                        # Step 4: Generate natural-language answer
+                        response = generate_answer(
+                            prompt,
+                            result,
+                            sql
+                        )
+                # Display response
                 st.write(response)
-            st.rerun()
-        if not sql or sql.strip() == "":
-            response = "I couldn't generate a valid query. Please rephrase your question."
-            st.session_state.messages.append({"role": "assistant", "content": response})
-            with st.chat_message("assistant"):
-                st.write(response)
-            st.rerun()
-        if validate_sql(sql):
-            result, error = execute_sql(sql)
-            if error:
-                response = f"Error: {error}"
-            else:
-                try:
-                    response = generate_answer(prompt, result, sql)
-                except Exception as e:
-                    response = f"Error generating answer: {e}"
-        else:
-            response = "I could not generate a valid database query."
-
-        st.session_state.messages.append({"role": "assistant", "content": response})
-        with st.chat_message("assistant"):
-            st.write(response)
-
-        st.rerun()
+                # Save assistant response
+                st.session_state.messages.append(
+                    {
+                        "role": "assistant",
+                        "content": response
+                    }
+                )
+            except Exception as e:
+                st.error("Something went wrong while processing your question.")
+                st.exception(e)
+                st.session_state.messages.append(
+                    {
+                        "role": "assistant",
+                        "content": response
+                    }
+                )

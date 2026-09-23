@@ -1,13 +1,17 @@
 import sqlite3
 import pandas as pd
 import os
+
 from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
 Groq_api_key = os.getenv("GROQ_API_KEY")
-Client = Groq(api_key=Groq_api_key)
+Client = Groq(
+    api_key=Groq_api_key
+)
 
+MODEL_NAME = "qwen/qwen3.8-27b"
 DATABASE_PATH = "database/hospital.db"
 
 # Connection Function
@@ -26,7 +30,7 @@ def run_query(query):
 # AI assistant Function
 def ask_ai(prompt):
     completion = Client.chat.completions.create(
-        model="qwen/qwen3.6-27b",
+        model=MODEL_NAME,
         messages=[{"role": "user", "content": prompt}]
     )
     return completion.choices[0].message.content
@@ -39,7 +43,7 @@ def get_table_schema(table_name):
 # Generate SQL Function
 def generate_sql(prompt, schema):
     completion = Client.chat.completions.create(
-        model="qwen/qwen3.6-27b",
+        model=MODEL_NAME,
         messages=[
             {
                 "role": "system",
@@ -220,7 +224,7 @@ def generate_answer(prompt, result, sql_used=None):
         rows = 1
 
     completion = Client.chat.completions.create(
-        model="qwen/qwen3.6-27b",
+        model=MODEL_NAME,
         messages=[
             {
                 "role": "system",
